@@ -1,0 +1,129 @@
+2023-10-25 10:32:43.843717-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DROP TABLE IF EXISTS [*]user"; expected "identifier"; SQL statement:
+DROP TABLE IF EXISTS user [42001-224]
+2023-10-25 10:32:43.859708-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE [*]user(\000d\000a\0009id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,\000d\000a        name VARCHAR(127),\000d\000a        email VARCHAR(255),\000d\000a        password VARCHAR(63)\000d\000a)"; expected "identifier"; SQL statement:
+CREATE TABLE user(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(127),
+        email VARCHAR(255),
+        password VARCHAR(63)
+) [42001-224]
+2023-10-25 10:46:57.095657-03:00 database: wrong user or password; user: "SA"
+org.h2.message.DbException: Wrong user name or password [28000-224]
+	at com.h2database@2.2.224/org.h2.message.DbException.get(DbException.java:223)
+	at com.h2database@2.2.224/org.h2.message.DbException.get(DbException.java:199)
+	at com.h2database@2.2.224/org.h2.message.DbException.get(DbException.java:188)
+	at com.h2database@2.2.224/org.h2.engine.Engine.openSession(Engine.java:154)
+	at com.h2database@2.2.224/org.h2.engine.Engine.openSession(Engine.java:222)
+	at com.h2database@2.2.224/org.h2.engine.Engine.createSession(Engine.java:201)
+	at com.h2database@2.2.224/org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at com.h2database@2.2.224/org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at com.h2database@2.2.224/org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at Dao.H2Connection.getConnection(H2Connection.java:20)
+	at Dao.H2Connection.main(H2Connection.java:36)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-224]
+	at com.h2database@2.2.224/org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at com.h2database@2.2.224/org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 13 more
+2023-10-25 10:48:31.800239-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO [*](name, description, status) VALUES (?, ?, ?)"; expected "identifier"; SQL statement:
+INSERT INTO (name, description, status) VALUES (?, ?, ?) [42001-224]
+2023-10-25 10:49:31.958272-03:00 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Java/workspace/CadastroDeTrecos/data/database.mv.db [2.2.224/7]" [50000-224]
+	at com.h2database@2.2.224/org.h2.message.DbException.get(DbException.java:212)
+	at com.h2database@2.2.224/org.h2.message.DbException.convert(DbException.java:407)
+	at com.h2database@2.2.224/org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at com.h2database@2.2.224/org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at com.h2database@2.2.224/org.h2.engine.Database.<init>(Database.java:326)
+	at com.h2database@2.2.224/org.h2.engine.Engine.openSession(Engine.java:92)
+	at com.h2database@2.2.224/org.h2.engine.Engine.openSession(Engine.java:222)
+	at com.h2database@2.2.224/org.h2.engine.Engine.createSession(Engine.java:201)
+	at com.h2database@2.2.224/org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at com.h2database@2.2.224/org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at com.h2database@2.2.224/org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at Dao.H2Connection.getConnection(H2Connection.java:20)
+	at Dao.H2Connection.main(H2Connection.java:36)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Java/workspace/CadastroDeTrecos/data/database.mv.db [2.2.224/7]" [50000-224]
+	at com.h2database@2.2.224/org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at com.h2database@2.2.224/org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 19 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Java/workspace/CadastroDeTrecos/data/database.mv.db [2.2.224/7]
+	at com.h2database@2.2.224/org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 13 more
+2023-10-25 10:49:57.976319-03:00 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Java/workspace/CadastroDeTrecos/data/database.mv.db [2.2.224/7]" [50000-224]
+	at com.h2database@2.2.224/org.h2.message.DbException.get(DbException.java:212)
+	at com.h2database@2.2.224/org.h2.message.DbException.convert(DbException.java:407)
+	at com.h2database@2.2.224/org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at com.h2database@2.2.224/org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at com.h2database@2.2.224/org.h2.engine.Database.<init>(Database.java:326)
+	at com.h2database@2.2.224/org.h2.engine.Engine.openSession(Engine.java:92)
+	at com.h2database@2.2.224/org.h2.engine.Engine.openSession(Engine.java:222)
+	at com.h2database@2.2.224/org.h2.engine.Engine.createSession(Engine.java:201)
+	at com.h2database@2.2.224/org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at com.h2database@2.2.224/org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at com.h2database@2.2.224/org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at Dao.H2Connection.getConnection(H2Connection.java:20)
+	at Dao.H2Connection.main(H2Connection.java:36)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Java/workspace/CadastroDeTrecos/data/database.mv.db [2.2.224/7]" [50000-224]
+	at com.h2database@2.2.224/org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at com.h2database@2.2.224/org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 19 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Java/workspace/CadastroDeTrecos/data/database.mv.db [2.2.224/7]
+	at com.h2database@2.2.224/org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 13 more
+2023-10-25 10:50:40.577560-03:00 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Java/workspace/CadastroDeTrecos/data/database.mv.db [2.2.224/7]" [50000-224]
+	at com.h2database@2.2.224/org.h2.message.DbException.get(DbException.java:212)
+	at com.h2database@2.2.224/org.h2.message.DbException.convert(DbException.java:407)
+	at com.h2database@2.2.224/org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at com.h2database@2.2.224/org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at com.h2database@2.2.224/org.h2.engine.Database.<init>(Database.java:326)
+	at com.h2database@2.2.224/org.h2.engine.Engine.openSession(Engine.java:92)
+	at com.h2database@2.2.224/org.h2.engine.Engine.openSession(Engine.java:222)
+	at com.h2database@2.2.224/org.h2.engine.Engine.createSession(Engine.java:201)
+	at com.h2database@2.2.224/org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at com.h2database@2.2.224/org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at com.h2database@2.2.224/org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at Dao.H2Connection.getConnection(H2Connection.java:20)
+	at Dao.H2Connection.main(H2Connection.java:36)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Java/workspace/CadastroDeTrecos/data/database.mv.db [2.2.224/7]" [50000-224]
+	at com.h2database@2.2.224/org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at com.h2database@2.2.224/org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 19 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Java/workspace/CadastroDeTrecos/data/database.mv.db [2.2.224/7]
+	at com.h2database@2.2.224/org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 13 more
